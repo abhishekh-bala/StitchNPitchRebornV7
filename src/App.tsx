@@ -631,6 +631,7 @@ function App() {
         winners={winners}
         losers={losers}
         eliteWinners={eliteWinners}
+        isLoggedIn={isLoggedIn}
       />
 
       <BackupRestore
@@ -640,6 +641,7 @@ function App() {
         losers={losers}
         eliteWinners={eliteWinners}
         onRestoreWinners={handleRestoreWinners}
+        isLoggedIn={isLoggedIn}
       />
 
       {/* Confetti Animation */}
