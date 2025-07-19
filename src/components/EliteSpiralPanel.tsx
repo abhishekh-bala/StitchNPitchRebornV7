@@ -418,6 +418,7 @@ const EliteSpiralPanel: React.FC<EliteSpiralPanelProps> = ({ winners, eliteWinne
           isActive={showEliteFailAnimation} 
           guideName={failedEliteName}
           onClose={handleCloseEliteFail}
+          isElite={true}
         />
       </div>
     </div>

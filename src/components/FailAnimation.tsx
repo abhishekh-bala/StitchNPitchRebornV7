@@ -5,9 +5,10 @@ interface FailAnimationProps {
   isActive: boolean;
   guideName: string;
   onClose: () => void;
+  isElite?: boolean;
 }
 
-const FailAnimation: React.FC<FailAnimationProps> = ({ isActive, guideName, onClose }) => {
+const FailAnimation: React.FC<FailAnimationProps> = ({ isActive, guideName, onClose, isElite = false }) => {
   if (!isActive) return null;
 
   const funnyMessages = [
