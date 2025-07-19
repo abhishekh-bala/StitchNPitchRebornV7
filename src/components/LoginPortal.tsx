@@ -39,7 +39,7 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
       <style>
         {`
           .login-container {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #581c87 0%, #7c3aed 25%, #8b5cf6 50%, #a855f7 75%, #c084fc 100%);
             min-height: 100vh;
             position: relative;
             overflow: hidden;
@@ -48,7 +48,7 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
           .login-orb {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background: linear-gradient(45deg, rgba(168,85,247,0.3), rgba(139,92,246,0.1));
             backdrop-filter: blur(10px);
             animation: float 6s ease-in-out infinite;
           }
@@ -75,6 +75,22 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
             bottom: 20%;
             left: 20%;
             animation-delay: 4s;
+          }
+          
+          .login-orb:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 1s;
+          }
+          
+          .login-orb:nth-child(5) {
+            width: 120px;
+            height: 120px;
+            bottom: 40%;
+            right: 20%;
+            animation-delay: 3s;
           }
           
           @keyframes float {
@@ -114,6 +130,35 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
           }
+          
+          .floating-icon {
+            position: absolute;
+            animation: float-icon 4s ease-in-out infinite;
+            opacity: 0.6;
+          }
+          
+          @keyframes float-icon {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+          }
+          
+          .sparkle-animation {
+            animation: sparkle 2s linear infinite;
+          }
+          
+          @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+          }
+          
+          .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+          }
+          
+          @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); }
+          }
         `}
       </style>
 
@@ -122,8 +167,30 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
         <div className="login-orb"></div>
         <div className="login-orb"></div>
         <div className="login-orb"></div>
+        <div className="login-orb"></div>
+        <div className="login-orb"></div>
 
-        <div className="bg-white bg-opacity-10 backdrop-blur-xl border border-white border-opacity-20 rounded-3xl p-8 md:p-12 max-w-md w-full shadow-2xl login-card-enter">
+        {/* Floating Fun Icons */}
+        <div className="floating-icon" style={{ top: '15%', left: '20%', animationDelay: '0s' }}>
+          <div className="text-4xl">🎨</div>
+        </div>
+        <div className="floating-icon" style={{ top: '25%', right: '25%', animationDelay: '1s' }}>
+          <div className="text-3xl">✨</div>
+        </div>
+        <div className="floating-icon" style={{ bottom: '30%', left: '15%', animationDelay: '2s' }}>
+          <div className="text-4xl">🎯</div>
+        </div>
+        <div className="floating-icon" style={{ bottom: '20%', right: '30%', animationDelay: '3s' }}>
+          <div className="text-3xl">🚀</div>
+        </div>
+        <div className="floating-icon" style={{ top: '40%', left: '10%', animationDelay: '1.5s' }}>
+          <div className="text-2xl sparkle-animation">⭐</div>
+        </div>
+        <div className="floating-icon" style={{ top: '60%', right: '10%', animationDelay: '2.5s' }}>
+          <div className="text-2xl sparkle-animation">💫</div>
+        </div>
+
+        <div className="bg-white bg-opacity-10 backdrop-blur-xl border border-white border-opacity-20 rounded-3xl p-8 md:p-12 max-w-md w-full shadow-2xl login-card-enter pulse-glow">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-6">
@@ -131,18 +198,15 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
                 <img 
                   src="/stitch-n-pitch-logo.png" 
                   alt="Stitch n Pitch Logo" 
-                  className="h-20 w-20 rounded-2xl object-cover drop-shadow-2xl border-4 border-white border-opacity-50"
+                  className="h-20 w-20 rounded-2xl object-cover drop-shadow-2xl border-4 border-purple-400 border-opacity-70"
                 />
-                <div className="absolute -top-2 -right-2">
-                  <Sparkles className="w-8 h-8 text-yellow-300 animate-pulse" />
-                </div>
               </div>
             </div>
             
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center justify-center gap-2">
-              <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center justify-center gap-3">
+              <div className="sparkle-animation">✨</div>
               Stitch n Pitch
-              <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+              <div className="sparkle-animation" style={{ animationDelay: '1s' }}>✨</div>
             </h1>
             
             <p className="text-purple-200 text-lg font-medium mb-2">
@@ -219,7 +283,7 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
               className={`login-button-hover w-full py-3 px-4 rounded-xl font-semibold text-lg transition-all transform ${
                 isLoading
                   ? 'bg-gray-500 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-lg'
+                  : 'bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 shadow-lg'
               } text-white backdrop-blur-sm border border-purple-500 border-opacity-50`}
             >
               {isLoading ? (
@@ -228,7 +292,11 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
                   Signing In...
                 </div>
               ) : (
-                'Sign In'
+                <div className="flex items-center justify-center gap-2">
+                  <span>🚀</span>
+                  Sign In
+                  <span>🎯</span>
+                </div>
               )}
             </button>
           </form>
@@ -245,7 +313,7 @@ const LoginPortal: React.FC<LoginPortalProps> = ({ onLogin }) => {
           {/* Footer */}
           <div className="mt-6 text-center">
             <p className="text-purple-200 text-sm">
-              Secure access to contest management system
+              🔐 Secure access to contest management system ✨
             </p>
           </div>
         </div>
